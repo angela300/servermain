@@ -1,14 +1,18 @@
 // Imporrting ppackages
 const express = require("express");
-const home = require("./routes/home");
+const serverless = require("serverless-http")
 
 // Middlewares
 const app = express();
 app.use(express.json());
 
-// Routes
-app.use("/home", home);
+app.get("/hello", (req, res)=>{
+    res.send("Hello world!")
+})
 
-// connection
-const port = 9001;
-app.listen(port, () => console.log(`Listening to port ${port}`));
+// module.exports.handler = serverless(app);
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  })
